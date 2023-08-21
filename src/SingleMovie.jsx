@@ -1,35 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import axios from "axios";
 import { styled } from "styled-components";
-import { API_ENDPOINT } from "./AppContext";
+import { API_ENDPOINT, useGlobalContext } from "./AppContext";
 
 const SingleMovie = () => {
+  const { isLoading, error, movie, fecthData } = useGlobalContext()
   const { id } = useParams()
-  const [isLoading, setIsLoading] = useState(true)
-  const [movie, setMovie] = useState({})
-  const [error, setError] = useState({ show: false, msg: '' });
-
-  const fetchData = async (url) => {
-    setIsLoading(true)
-    try {
-      const { data } = await axios.get(url)
-      if (data.Response === 'True') {
-        setMovie(data);
-        setError({ show: false, msg: '' })
-      } else {
-        setError({ show: true, msg: data.Error })
-      }
-      setIsLoading(false)
-    } catch (error) {
-      setIsLoading(false)
-      console.log(error);
-    }
-  }
 
   useEffect(() => {
-    fetchData(`${API_ENDPOINT}&i=${id}`)
-  }, [id])
+    fecthData(`${API_ENDPOINT}&i=${id}`, 'movie');
+  }, [id]);
 
   if (isLoading) {
     return (
