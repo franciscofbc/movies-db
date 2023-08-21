@@ -1,15 +1,10 @@
-import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { styled } from "styled-components";
-import { API_ENDPOINT, useGlobalContext } from "./AppContext";
+import useFetch from "./useFetch";
 
 const SingleMovie = () => {
-  const { isLoading, error, movie, fecthData } = useGlobalContext()
   const { id } = useParams()
-
-  useEffect(() => {
-    fecthData(`${API_ENDPOINT}&i=${id}`, 'movie');
-  }, [id]);
+  const { isLoading, error, data: movie } = useFetch(`&i=${id}`)
 
   if (isLoading) {
     return (

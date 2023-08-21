@@ -11,7 +11,7 @@ const Movies = () => {
 
   return (
     <Wrapper>
-      {movies.map((movie) => {
+      {movies?.map((movie) => {
         const { Title, Year, Poster, imdbID } = movie;
         return (
           <Link className="movie" to={`/movies/${imdbID}`} key={imdbID}>
