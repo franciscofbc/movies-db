@@ -38,7 +38,18 @@ const SingleMovie = () => {
     )
   }
 
-  const { Title, Poster, Year, Plot, imdbRating, imdbVotes, Genre, Country, Type, totalSeasons } = movie
+  if (error.show) {
+    return (
+      <div className="section section-center">
+        <p style={{ marginBottom: '1rem' }}>{error.msg || 'page not found'}</p>
+        <Link to='/' className="btn">back to movies</Link>
+      </div>
+    )
+  }
+
+  const { Title, Poster, Year, Plot,
+    imdbRating, imdbVotes, Genre, Country, Type, totalSeasons } = movie
+
   return (
     <Wrapper className="section section-center">
       <img src={Poster} alt={Title} />

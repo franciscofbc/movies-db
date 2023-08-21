@@ -4,11 +4,11 @@ const SearchForm = () => {
   const { query, setQuery, error } = useGlobalContext();
 
   return (
-    <form className='form'>
+    <form className='form' onSubmit={(event) => event.preventDefault()}>
       <input type="text" className='form-input' value={query}
         onChange={(event) => setQuery(event.target.value)}
         placeholder='type the title' />
-      <p>{error.msg}</p>
+      <p>{error?.msg}</p>
     </form>
   )
 };
