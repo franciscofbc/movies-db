@@ -1,10 +1,16 @@
 import { useGlobalContext } from './AppContext';
 
 const SearchForm = () => {
-  const { query, setQuery } = useGlobalContext();
+  const { query, setQuery, error } = useGlobalContext();
 
-  // console.log(query);
-
-  return <div>SearchForm</div>;
+  return (
+    <form className='form'>
+      <input type="text" className='form-input' value={query}
+        onChange={(event) => setQuery(event.target.value)}
+        placeholder='type the title' />
+      <p>{error.msg}</p>
+    </form>
+  )
 };
+
 export default SearchForm;

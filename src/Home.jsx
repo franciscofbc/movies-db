@@ -5,8 +5,7 @@ const Home = () => {
   return (
     <main className="section section-center">
       <div className="title">
-        <h1>search movies</h1>
-        <div className="title-underline"></div>
+        <h1>search movies/series...</h1>
       </div>
       <SearchForm />
       <Movies />

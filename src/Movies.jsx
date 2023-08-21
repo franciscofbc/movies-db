@@ -3,7 +3,11 @@ import { styled } from 'styled-components';
 import { useGlobalContext } from './AppContext';
 
 const Movies = () => {
-  const { movies } = useGlobalContext();
+  const { movies, isLoading } = useGlobalContext();
+
+  if (isLoading) {
+    return <div className="loading"></div>
+  }
 
   return (
     <Wrapper>
